@@ -1,6 +1,6 @@
 {
   "name": "@astrox/schnorr-snap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "main": "build/index.js",
   "files": [
@@ -37,7 +37,7 @@
     "prepublish": "yarn run build"
   },
   "dependencies": {
-    "@astrox/schnorr-snap-types": "^0.0.2",
+    "@astrox/schnorr-snap-types": "^0.0.3",
     "@dfinity/agent": "0.15.1",
     "@dfinity/candid": "^0.15.1",
     "@dfinity/identity": "^0.15.1",
