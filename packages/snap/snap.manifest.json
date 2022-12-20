@@ -1,0 +1,29 @@
+{
+  "version": "0.0.2",
+  "proposedName": "SchnorrSnap",
+  "description": "The schnorr snap.",
+  "source": {
+    "shasum": "btUGreVKMYGghLkPTjgM+eOW0GBhzODl+1Dgbl30YEw=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "packageName": "@astrox/schnorr-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:network-access": {},
+    "snap_confirm": {},
+    "snap_getBip44Entropy": [
+      {
+        "coinType": 1
+      },
+      {
+        "coinType": 0
+      }
+    ],
+    "snap_manageState": {}
+  },
+  "manifestVersion": "0.1"
+}

@@ -30,5 +30,5 @@
     "@dfinity/identity": "^0.15.1",
     "@dfinity/identity-secp256k1": "^0.15.1"
   },
-  "gitHead": "29b76776e604f295186ba0dae01c73b24b7658c3"
+  "gitHead": "f168ac561460b3b536e170842d4ba40f344d630e"
 }
