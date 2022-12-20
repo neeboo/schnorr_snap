@@ -3,7 +3,7 @@
   "proposedName": "SchnorrSnap",
   "description": "The schnorr snap.",
   "source": {
-    "shasum": "btUGreVKMYGghLkPTjgM+eOW0GBhzODl+1Dgbl30YEw=",
+    "shasum": "lMnXXD8J3jXwhcCWHC/IA0E1p/1YFzGeluhBldMvOlE=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

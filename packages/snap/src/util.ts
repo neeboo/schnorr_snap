@@ -156,7 +156,15 @@ export class SchorrIdentity extends SignIdentity {
    * @returns {Promise<Signature>} signature
    */
   public async sign(challenge: ArrayBuffer): Promise<Signature> {
-    const signature = await secp256k1.schnorr.sign(toHexString(challenge), new Uint8Array(this._privateKey));
+    const msg = await secp256k1.utils.sha256(new Uint8Array(challenge));
+    const signature = await secp256k1.schnorr.sign(toHexString(msg), new Uint8Array(this._privateKey));
+
+    const pub = secp256k1.schnorr.getPublicKey(toHexString(this._privateKey));
+
+    if ((await secp256k1.schnorr.verify(toHexString(signature), toHexString(msg), toHexString(pub))) === false) {
+      throw 'Signature or Message is malformed';
+    }
+
     return signature.buffer as Signature;
   }
 }
