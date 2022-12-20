@@ -1,6 +1,6 @@
 {
   "name": "@astrox/schnorr-snap-adapter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "build/index.js",
   "module": "build/index.js",
   "types": "build/index.d.ts",
@@ -24,11 +24,11 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "@astrox/schnorr-snap-types": "^0.0.1",
+    "@astrox/schnorr-snap-types": "^0.0.2",
     "@dfinity/agent": "^0.15.1",
     "@dfinity/candid": "^0.15.1",
     "@dfinity/identity": "^0.15.1",
     "@dfinity/identity-secp256k1": "^0.15.1"
   },
-  "gitHead": "d9ac0fd3388bab84a84c1ad323c2e54ce2ab1711"
+  "gitHead": "29b76776e604f295186ba0dae01c73b24b7658c3"
 }

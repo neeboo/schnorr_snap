@@ -1,6 +1,6 @@
 {
   "name": "@astrox/schnorr-snap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "main": "build/index.js",
   "files": [
@@ -37,7 +37,7 @@
     "prepublish": "yarn run build"
   },
   "dependencies": {
-    "@astrox/schnorr-snap-types": "^0.0.1",
+    "@astrox/schnorr-snap-types": "^0.0.2",
     "@dfinity/agent": "0.15.1",
     "@dfinity/candid": "^0.15.1",
     "@dfinity/identity": "^0.15.1",
@@ -54,5 +54,9 @@
     "tslib": "^2.4.1",
     "typescript": "^4.6.3"
   },
-  "gitHead": "d9ac0fd3388bab84a84c1ad323c2e54ce2ab1711"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "gitHead": "29b76776e604f295186ba0dae01c73b24b7658c3"
 }
