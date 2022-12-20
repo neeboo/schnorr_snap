@@ -10,7 +10,7 @@ export async function getIdentity(wallet: Wallet): Promise<string> {
   let bip44Node: JsonBIP44CoinTypeNode;
   const currentVersion = await getMetamaskVersion(wallet);
 
-  if (isNewerVersion('MetaMask/v10.18.99-flask.0', currentVersion))
+  if (isNewerVersion('MetaMask/v10.22.0-flask.0', currentVersion))
     bip44Node = (await wallet.request({
       method: 'snap_getBip44Entropy',
       params: {
@@ -40,7 +40,8 @@ export async function getIdentity(wallet: Wallet): Promise<string> {
     change: parseInt(change),
   });
   const extendedPrivateKey = await addressKeyDeriver(Number(addressIndex));
-  privateKey = new Uint8Array(extendedPrivateKey.privateKeyBuffer.slice(0, 32));
+
+  privateKey = new Uint8Array(extendedPrivateKey.privateKeyBytes.slice(0, 32));
 
   const sk = SchorrIdentity.fromSecretKey(privateKey.buffer);
 

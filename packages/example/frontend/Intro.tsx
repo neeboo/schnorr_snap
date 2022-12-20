@@ -19,7 +19,7 @@ export function Intro() {
   )
 
   const installSnap = useCallback(async () => {
-    const installResult = await initiateSchnorrSnap()
+    const installResult = await initiateSchnorrSnap("nostr") //mainnet, local, nostr
     if (!installResult.isSnapInstalled) {
       setInstalled(false)
     } else {

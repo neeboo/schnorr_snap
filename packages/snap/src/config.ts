@@ -3,6 +3,7 @@ import deepmerge from 'deepmerge';
 
 export const btcMainnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/0'/0'/0/0",
+  coinType: 0,
   network: 'mainnet',
   rpc: {
     token: '',
@@ -17,6 +18,7 @@ export const btcMainnetConfiguration: SnapConfig = {
 
 export const btcLocalConfiguration: SnapConfig = {
   derivationPath: "m/44'/0'/0'/0/0",
+  coinType: 0,
   network: 'local',
   rpc: {
     token: '',
@@ -28,6 +30,20 @@ export const btcLocalConfiguration: SnapConfig = {
     symbol: 'BTC',
   },
 };
+export const noStrLocalConfiguration: SnapConfig = {
+  derivationPath: "m/44'/1237'/0'/0/0",
+  coinType: 1237,
+  network: 'nostr',
+  rpc: {
+    token: '',
+    url: 'https://localhost:8000',
+  },
+  unit: {
+    decimals: 8,
+    image: `https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=023`,
+    symbol: 'Nostr',
+  },
+};
 
 export const defaultConfiguration = btcMainnetConfiguration;
 
@@ -36,6 +52,9 @@ export function getDefaultConfiguration(networkName?: string): SnapConfig {
     case 'mainnet':
       console.log('BTC mainnet network selected');
       return btcMainnetConfiguration;
+    case 'nostr':
+      console.log('NoStr network selected');
+      return noStrLocalConfiguration;
     case 'local':
       console.log('BTC local network selected');
       return btcLocalConfiguration;
@@ -68,7 +87,7 @@ export async function configure(wallet: Wallet, networkName: string, overrides?:
   //   const api = await getApiFromConfig(configuration);
   //   const apiNetworkName = await api.stateNetworkName();
   // check if derivation path is valid
-  if (bip44Code != '0') {
+  if (bip44Code !== String(configuration.coinType)) {
     throw new Error('Wrong CoinType in derivation path');
   }
   const state = (await wallet.request({ method: 'snap_manageState', params: ['get'] })) as MetamaskState;

@@ -1,9 +1,9 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "proposedName": "SchnorrSnap",
   "description": "The schnorr snap.",
   "source": {
-    "shasum": "lMnXXD8J3jXwhcCWHC/IA0E1p/1YFzGeluhBldMvOlE=",
+    "shasum": "qQVstG4ZaEj9h8nFWKOTmx6C7ks2m6EAioOFPGqYSiY=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -21,6 +21,9 @@
       },
       {
         "coinType": 0
+      },
+      {
+        "coinType": 1237
       }
     ],
     "snap_manageState": {}

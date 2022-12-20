@@ -1,7 +1,7 @@
 import { MetamaskSchnorrRpcRequest } from './methods';
 import { SignMessageResponse, SignRawMessageResponse } from './wallet';
 
-export type SchnorrNetwork = 'mainnet' | 'local';
+export type SchnorrNetwork = 'mainnet' | 'local' | 'nostr';
 export interface UnitConfiguration {
   symbol: string;
   decimals: number;
@@ -10,6 +10,7 @@ export interface UnitConfiguration {
 }
 export interface SnapConfig {
   derivationPath: string;
+  coinType: number;
   network: SchnorrNetwork;
   rpc: {
     token: string;

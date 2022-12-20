@@ -2,6 +2,7 @@ import {
   MetamaskSchnorrSnap,
   enableSchnorrSnap,
 } from "@astrox/schnorr-snap-adapter"
+import { SchnorrNetwork } from "@astrox/schnorr-snap-types"
 
 export const defaultSnapId = "local:http://localhost:8081"
 
@@ -12,14 +13,17 @@ export interface SnapInitializationResponse {
   snap?: MetamaskSchnorrSnap
 }
 
-export async function initiateSchnorrSnap(): Promise<SnapInitializationResponse> {
+export async function initiateSchnorrSnap(
+  network: SchnorrNetwork = "local",
+): Promise<SnapInitializationResponse> {
   const snapId = process.env.SNAP_ID
+
   // const snapId = defaultSnapId
   try {
     console.log("Attempting to connect to snap...")
 
     const metamaskSchnorrSnap = await enableSchnorrSnap(
-      { network: "local" },
+      { network }, // 'mainnet', 'nostr'
       snapId,
       {
         version: "latest",

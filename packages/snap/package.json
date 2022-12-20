@@ -42,7 +42,7 @@
     "@dfinity/candid": "^0.15.1",
     "@dfinity/identity": "^0.15.1",
     "@dfinity/identity-secp256k1": "^0.15.1",
-    "@metamask/key-tree": "^4.0.0",
+    "@metamask/key-tree": "^6.0.0",
     "@metamask/key-tree-old": "npm:@metamask/key-tree@^3.0.1",
     "@metamask/snaps-cli": "^0.18.1",
     "@noble/secp256k1": "^1.7.0",
