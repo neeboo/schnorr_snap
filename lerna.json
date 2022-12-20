@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "packages/adapter",
+    "packages/snap",
+    "packages/types"
+  ],
+  "version": "0.0.1"
+}

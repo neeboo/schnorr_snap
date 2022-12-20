@@ -1,0 +1,34 @@
+{
+  "name": "@astrox/schnorr-snap-adapter",
+  "version": "0.0.1",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "author": "AstroX <dev@astrox.network>",
+  "license": "(Apache-2.0 AND MIT)",
+  "private": false,
+  "homepage": "https://github.com/AstroxNetwork",
+  "keywords": [
+    "dfinity",
+    "ic",
+    "icp",
+    "metamask",
+    "snap",
+    "dapp"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Adapter for installing ICSnap",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "dependencies": {
+    "@astrox/schnorr-snap-types": "^0.0.1",
+    "@dfinity/agent": "^0.15.1",
+    "@dfinity/candid": "^0.15.1",
+    "@dfinity/identity": "^0.15.1",
+    "@dfinity/identity-secp256k1": "^0.15.1"
+  },
+  "gitHead": "d9ac0fd3388bab84a84c1ad323c2e54ce2ab1711"
+}
