@@ -1,9 +1,9 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "proposedName": "SchnorrSnap",
   "description": "The schnorr snap.",
   "source": {
-    "shasum": "qQVstG4ZaEj9h8nFWKOTmx6C7ks2m6EAioOFPGqYSiY=",
+    "shasum": "Ku2LTdcxDkWGxrardNXH7OwWy+GS6ITwt6+6sdkhfVI=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

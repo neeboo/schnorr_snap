@@ -1,6 +1,6 @@
 import { SchnorrSnapApi, SnapConfig } from '@astrox/schnorr-snap-types';
 import { hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled } from './util';
-import { configure, getIdentity, getPrincipal, getRawPublicKey, sign, signRawMessage } from './methods';
+import { configure, decryptMessage, encryptMessage, getPrincipal, getRawPublicKey, sign, signRawMessage } from './methods';
 
 interface SnapIdentity {
   api: SchnorrSnapApi;
@@ -28,9 +28,10 @@ export class MetamaskSchnorrSnap {
   public getSchnorrSnapApi = async (): Promise<SchnorrSnapApi> => {
     return {
       configure: configure.bind(this),
-      getIdentity: getIdentity.bind(this),
       sign: sign.bind(this),
       signRawMessage: signRawMessage.bind(this),
+      encryptMessage: encryptMessage.bind(this),
+      decryptMessage: decryptMessage.bind(this),
       getPrincipal: getPrincipal.bind(this),
       getRawPublicKey: getRawPublicKey.bind(this),
     };

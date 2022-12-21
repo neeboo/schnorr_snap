@@ -48,6 +48,7 @@
     "@noble/secp256k1": "^1.7.0",
     "@types/deepmerge": "^2.2.0",
     "@types/secp256k1": "^4.0.3",
+    "browserify-cipher": "^1.0.1",
     "deepmerge": "^4.2.2",
     "secp256k1": "^4.0.3",
     "ts-node": "^10.7.0",

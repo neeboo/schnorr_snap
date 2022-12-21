@@ -23,11 +23,6 @@ export type MetamaskState = {
   };
 };
 
-// Schnorr methods
-export interface GetIdentityRequest {
-  method: 'Schnorr_getIdentity';
-}
-
 export interface ConfigureRequest {
   method: 'Schnorr_configure';
   params: {
@@ -48,6 +43,22 @@ export interface SignRawMessageRequest {
   };
 }
 
+export interface EncryptMessageRequest {
+  method: 'Schnorr_encryptMessage';
+  params: {
+    theirPublicKey: string;
+    message: string;
+  };
+}
+
+export interface DecryptMessageRequest {
+  method: 'Schnorr_decryptMessage';
+  params: {
+    theirPublicKey: string;
+    cipherText: string;
+  };
+}
+
 export interface GetRawPublicKey {
   method: 'Schnorr_getRawPublicKey';
 }
@@ -56,6 +67,13 @@ export interface GetPrincipal {
   method: 'Schnorr_getPrincipal';
 }
 
-export type MetamaskSchnorrRpcRequest = ConfigureRequest | GetIdentityRequest | SignRequest | SignRawMessageRequest | GetPrincipal | GetRawPublicKey;
+export type MetamaskSchnorrRpcRequest =
+  | ConfigureRequest
+  | SignRequest
+  | SignRawMessageRequest
+  | GetPrincipal
+  | GetRawPublicKey
+  | EncryptMessageRequest
+  | DecryptMessageRequest;
 
 type Method = MetamaskSchnorrRpcRequest['method'];

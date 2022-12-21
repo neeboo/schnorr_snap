@@ -1,6 +1,8 @@
 import { MetamaskSchnorrRpcRequest, MetamaskState, Wallet } from '@astrox/schnorr-snap-types';
 import { configure, defaultConfiguration } from './config';
-import { getIdentity } from './getIdentity';
+import { decryptMessage } from './decryptMessage';
+import { encryptMessage } from './encryptMessage';
+
 import { getPrincipal } from './getPrincipal';
 import { getRawPublicKey } from './getPublicKey';
 import { sign, signRawMessasge } from './sign';
@@ -29,8 +31,6 @@ export const onRpcRequest = async ({ origin, request }: { origin: string; reques
     case 'Schnorr_configure':
       const resp = await configure(wallet, request.params.configuration.network, request.params.configuration);
       return resp.snapConfig;
-    case 'Schnorr_getIdentity':
-      return await getIdentity(wallet);
     case 'Schnorr_getPrincipal':
       return await getPrincipal(wallet);
     case 'Schnorr_getRawPublicKey':
@@ -39,7 +39,10 @@ export const onRpcRequest = async ({ origin, request }: { origin: string; reques
       return await sign(wallet, request.params.message);
     case 'Schnorr_signRawMessage':
       return await signRawMessasge(wallet, request.params.message);
-
+    case 'Schnorr_encryptMessage':
+      return await encryptMessage(wallet, request.params.theirPublicKey, request.params.message);
+    case 'Schnorr_decryptMessage':
+      return await decryptMessage(wallet, request.params.theirPublicKey, request.params.cipherText);
     default:
       throw new Error('Unsupported RPC method');
   }

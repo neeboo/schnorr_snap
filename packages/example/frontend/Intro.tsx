@@ -10,6 +10,27 @@ export function Intro() {
 
   const [installed, setInstalled] = useState<boolean>(false)
   const [message, setMessage] = useState<string | undefined>(undefined)
+  const [toEncryptMessage, setToEncryptMessage] = useState<string | undefined>(
+    undefined,
+  )
+
+  const [toDecryptMessage, setToDecryptMessage] = useState<string | undefined>(
+    undefined,
+  )
+  const [theirPublicKey, setTheirPublicKey] = useState<string | undefined>(
+    undefined,
+  )
+  const [theirDecryptPublicKey, setTheirDecryptPublicKey] = useState<
+    string | undefined
+  >(undefined)
+
+  const [messageEncrypted, setMessageEncrypted] = useState<string | undefined>(
+    undefined,
+  )
+  const [messageDecrypted, setMessageDecrypted] = useState<string | undefined>(
+    undefined,
+  )
+
   const [signedMessage, setSignedMessage] = useState<
     SignRawMessageResponse | undefined
   >(undefined)
@@ -35,6 +56,22 @@ export function Intro() {
   const signMessage = async () => {
     const signed = await snapIdentity?.api.sign(message!)
     setSignedMessage(signed!)
+  }
+
+  const encryptMessage = async () => {
+    const encrypted = await snapIdentity.api.encryptMessage(
+      theirPublicKey,
+      toEncryptMessage,
+    )
+    setMessageEncrypted(JSON.stringify(encrypted))
+  }
+
+  const decryptMessage = async () => {
+    const encrypted = await snapIdentity.api.decryptMessage(
+      theirDecryptPublicKey,
+      toDecryptMessage,
+    )
+    setMessageDecrypted(JSON.stringify(encrypted))
   }
 
   useEffect(() => {
@@ -99,6 +136,84 @@ export function Intro() {
             >
               <code>Signature is : </code>
               <p>{signedMessage?.signature}</p>
+            </div>
+          ) : null}
+
+          <h2>Encrypt Message</h2>
+          {installed ? (
+            <>
+              <label style={{ marginBottom: 16 }}>
+                Input Message To Encrypt
+              </label>
+              <input
+                aria-label="To Encrypt a message"
+                style={{ padding: "1em" }}
+                onChange={(e) => {
+                  setToEncryptMessage(e.target.value)
+                }}
+              />
+              <label style={{ marginBottom: 16 }}>Input Their PublicKey</label>
+              <input
+                aria-label="We need their publicKey"
+                style={{ padding: "1em" }}
+                onChange={(e) => {
+                  setTheirPublicKey(e.target.value)
+                }}
+              />
+              <button className="demo-button" onClick={encryptMessage}>
+                Encrypt Message
+              </button>
+            </>
+          ) : null}
+          {messageEncrypted !== undefined ? (
+            <div
+              style={{
+                wordBreak: "break-all",
+                maxWidth: "100%",
+                margin: "1em 0",
+              }}
+            >
+              <code>Encrypted Message is : </code>
+              <p>{messageEncrypted}</p>
+            </div>
+          ) : null}
+
+          <h2>Decrypt Message</h2>
+          {installed ? (
+            <>
+              <label style={{ marginBottom: 16 }}>
+                Input CipherText To Decrypt
+              </label>
+              <input
+                aria-label="To Decrypt a message"
+                style={{ padding: "1em" }}
+                onChange={(e) => {
+                  setToDecryptMessage(e.target.value)
+                }}
+              />
+              <label style={{ marginBottom: 16 }}>Input Their PublicKey</label>
+              <input
+                aria-label="We need their publicKey"
+                style={{ padding: "1em" }}
+                onChange={(e) => {
+                  setTheirDecryptPublicKey(e.target.value)
+                }}
+              />
+              <button className="demo-button" onClick={decryptMessage}>
+                Encrypt Message
+              </button>
+            </>
+          ) : null}
+          {messageDecrypted !== undefined ? (
+            <div
+              style={{
+                wordBreak: "break-all",
+                maxWidth: "100%",
+                margin: "1em 0",
+              }}
+            >
+              <code>Decrypted Message is : </code>
+              <p>{messageDecrypted}</p>
             </div>
           ) : null}
         </div>

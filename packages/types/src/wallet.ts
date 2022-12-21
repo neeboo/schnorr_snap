@@ -19,6 +19,14 @@ export interface SignMessageResponse {
   error: Error;
 }
 
+export interface EncryptMessageResponse {
+  pubkey: string;
+  created_at: number;
+  kind: number;
+  tags: any[];
+  content: string;
+}
+
 export interface WalletEnableParam {
   wallet_snap: {
     [snapId: string]: {

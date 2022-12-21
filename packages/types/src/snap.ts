@@ -1,5 +1,5 @@
 import { MetamaskSchnorrRpcRequest } from './methods';
-import { SignMessageResponse, SignRawMessageResponse } from './wallet';
+import { EncryptMessageResponse, SignMessageResponse, SignRawMessageResponse } from './wallet';
 
 export type SchnorrNetwork = 'mainnet' | 'local' | 'nostr';
 export interface UnitConfiguration {
@@ -36,10 +36,11 @@ export interface SnapRpcMethodRequest {
 export type MetamaskRpcRequest = WalletEnableRequest | GetSnapsRequest | SnapRpcMethodRequest;
 
 export interface SchnorrSnapApi {
-  getIdentity(): Promise<string>;
   getRawPublicKey(): Promise<string>;
   configure(configuration: Partial<SnapConfig>): Promise<void>;
   sign(message: string): Promise<SignMessageResponse>;
   signRawMessage(message: string): Promise<SignRawMessageResponse>;
+  encryptMessage(theirPublicKey: string, message: string): Promise<EncryptMessageResponse>;
+  decryptMessage(theirPublicKey: string, cipherText: string): Promise<string>;
   getPrincipal(): Promise<string>;
 }
